@@ -546,7 +546,7 @@ resource "azurerm_linux_virtual_machine" "f5vm01" {
   admin_password = var.az_key_vault_authentication && !var.enable_ssh_key ? data.azurerm_key_vault_secret.bigip_admin_password[0].value : !var.enable_ssh_key ? random_string.password.result : null
   disable_password_authentication = var.enable_ssh_key
 
-  custom_data = coalesce(var.custom_user_data, data.template_file.init_file.rendered)
+  custom_data = base64encode(coalesce(var.custom_user_data, data.template_file.init_file.rendered))
 
   dynamic "admin_ssh_key" {
     for_each = var.enable_ssh_key ? [var.f5_ssh_publickey] : []
