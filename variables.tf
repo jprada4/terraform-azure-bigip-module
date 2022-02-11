@@ -102,7 +102,7 @@ variable "disk_encryption_set_id" {
 }
 
 variable "encryption_at_host_enabled" {
-  description = " (Optional) Should all of the disks (including the temp disk) attached to this Virtual Machine be encrypted by enabling Encryption at Host?"
+  description = "(Optional) Should all of the disks (including the temp disk) attached to this Virtual Machine be encrypted by enabling Encryption at Host?"
   default = false
 }
 
@@ -187,6 +187,11 @@ variable "availabilityZones" {
   description = "If you want the VM placed in an Azure Availability Zone, and the Azure region you are deploying to supports it, specify the numbers of the existing Availability Zone you want to use."
   type        = list(any)
   default     = [1]
+}
+
+variable "availability_set_id" {
+  description = "(Optional) Specifies the ID of the Availability Set in which the Virtual Machine should exist. Changing this forces a new resource to be created."
+  default = null
 }
 
 variable "availabilityZones_public_ip" {

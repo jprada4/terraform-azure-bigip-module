@@ -538,7 +538,7 @@ resource "azurerm_linux_virtual_machine" "f5vm01" {
   network_interface_ids        = concat(azurerm_network_interface.mgmt_nic.*.id, azurerm_network_interface.external_nic.*.id, azurerm_network_interface.external_public_nic.*.id, azurerm_network_interface.internal_nic.*.id)
   size                         = var.f5_instance_type
   encryption_at_host_enabled   = var.encryption_at_host_enabled
-
+  computer_name                = "${local.instance_prefix}-f5vm01"
 
   # formerly os_profile settings
   admin_username = var.f5_username
@@ -580,7 +580,8 @@ resource "azurerm_linux_virtual_machine" "f5vm01" {
     disk_size_gb            = var.os_disk_size_gb 
   }
 
-  #zone = var.availabilityZones
+  # Switched to availability sets (optionally)
+  availability_set_id = var.availability_set_id
 
   tags = merge(local.tags, {
     Name = format("%s-f5vm01", local.instance_prefix)
