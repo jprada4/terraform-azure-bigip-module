@@ -580,7 +580,7 @@ resource "azurerm_linux_virtual_machine" "f5vm01" {
     disk_size_gb            = var.os_disk_size_gb 
   }
 
-  zone = var.availabilityZones
+  #zone = var.availabilityZones
 
   tags = merge(local.tags, {
     Name = format("%s-f5vm01", local.instance_prefix)
