@@ -594,7 +594,8 @@ resource "azurerm_linux_virtual_machine" "f5vm01" {
     type         = "UserAssigned"
     identity_ids = [azurerm_user_assigned_identity.user_identity.id]
   }
-  depends_on = [azurerm_network_interface_security_group_association.mgmt_security, azurerm_network_interface_security_group_association.internal_security, azurerm_network_interface_security_group_association.external_security, azurerm_network_interface_security_group_association.external_public_security]
+  # No longer requires NSGs to be applied at NIC level
+  # depends_on = [azurerm_network_interface_security_group_association.mgmt_security, azurerm_network_interface_security_group_association.internal_security, azurerm_network_interface_security_group_association.external_security, azurerm_network_interface_security_group_association.external_public_security]
 }
 
 
