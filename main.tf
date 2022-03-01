@@ -344,7 +344,7 @@ resource "azurerm_network_interface" "mgmt_nic" {
   name                = "${local.instance_prefix}-mgmt-nic-${count.index}"
   location            = data.azurerm_resource_group.bigiprg.location
   resource_group_name = data.azurerm_resource_group.bigiprg.name
-  //enable_accelerated_networking = var.enable_accelerated_networking
+  enable_accelerated_networking = var.enable_accelerated_networking
 
   ip_configuration {
     name                          = "${local.instance_prefix}-mgmt-ip-${count.index}"
@@ -364,7 +364,7 @@ resource "azurerm_network_interface" "external_nic" {
   name                = "${local.instance_prefix}-ext-nic-${count.index}"
   location            = data.azurerm_resource_group.bigiprg.location
   resource_group_name = data.azurerm_resource_group.bigiprg.name
-  //enable_accelerated_networking = var.enable_accelerated_networking
+  enable_accelerated_networking = var.enable_accelerated_networking
 
   ip_configuration {
     name                          = "${local.instance_prefix}-ext-ip-${count.index}"
@@ -391,7 +391,7 @@ resource "azurerm_network_interface" "external_public_nic" {
   name                = "${local.instance_prefix}-ext-nic-public-${count.index}"
   location            = data.azurerm_resource_group.bigiprg.location
   resource_group_name = data.azurerm_resource_group.bigiprg.name
-  //enable_accelerated_networking = var.enable_accelerated_networking
+  enable_accelerated_networking = var.enable_accelerated_networking
 
   ip_configuration {
     name                          = "${local.instance_prefix}-ext-public-ip-${count.index}"
@@ -419,7 +419,7 @@ resource "azurerm_network_interface" "internal_nic" {
   name                = "${local.instance_prefix}-int-nic${count.index}"
   location            = data.azurerm_resource_group.bigiprg.location
   resource_group_name = data.azurerm_resource_group.bigiprg.name
-  //enable_accelerated_networking = var.enable_accelerated_networking
+  enable_accelerated_networking = var.enable_accelerated_networking
 
   ip_configuration {
     name                          = "${local.instance_prefix}-int-ip-${count.index}"
